@@ -1,6 +1,12 @@
 class Api::ProductsController < ApplicationController
-  def display_all_action
+  def index
     @products = Product.all
-    render "display_all.json.jbuilder"
+    render "index.json.jbuilder"
+  end
+
+  def show
+    product_id = params[:id]
+    @product = Product.find_by(id: product_id)
+    render "show.json.jbuilder"
   end
 end
