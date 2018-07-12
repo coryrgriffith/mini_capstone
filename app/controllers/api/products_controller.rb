@@ -2,9 +2,9 @@ class Api::ProductsController < ApplicationController
   def index
     input_name = params[:input_name]
     if input_name
-      @products = Product.where('name LIKE ?', "%#{input_name}%").order(:id)
+      @products = Product.where('LOWER name LIKE ?', "%#{input_name.downcase}%").order(:id)
     else
-      @products = Product.all
+      @products = Product.all.order(:id)
     end
     render "index.json.jbuilder"
   end

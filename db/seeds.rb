@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# associate products with a supplier
+suppliers = Supplier.all
+products = Product.all
+products.each do |product|
+  product.supplier_id = suppliers.sample.id
+  product.save
+end
