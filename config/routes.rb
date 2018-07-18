@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # STEP 1: A ROUTE triggers a controller action
   # verb "/urls" => "namespace/controllers#action"
+  
   namespace :api do
     #index, display all products
     get '/products' => 'products#index'
@@ -12,5 +13,11 @@ Rails.application.routes.draw do
     patch '/products/:id' => 'products#update'
     #destroy, delete an existing product
     delete '/products/:id' => 'products#destroy'
+
+    post '/users' => 'users#create'
+    post '/sessions' => 'sessions#create'
+
+    get '/orders/:id' => 'orders#show'
+    post '/orders' => 'orders#create'
   end
 end
