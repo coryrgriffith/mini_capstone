@@ -8,4 +8,5 @@ json.array! @products.each do |product|
   json.description product.description
   json.supplier product.supplier
   json.images product.images
+  json.categories product.categories
 end

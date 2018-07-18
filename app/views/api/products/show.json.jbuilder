@@ -7,3 +7,4 @@ json.discounted @product.is_discounted?
 json.images @product.images
 json.description @product.description
 json.supplier @product.supplier
+json.categories @product.categories

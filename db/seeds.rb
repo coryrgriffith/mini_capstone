@@ -27,3 +27,13 @@
 #   image.product_id = products.sample.id
 #   image.save
 # end
+
+products = Product.all
+categories = Category.all
+
+products.each do |product|
+  first_category = categories.shuffle.pop.id 
+  second_category = categories.shuffle.pop.id
+  CategoryProduct.create(category_id: first_category, product_id: product.id)
+  CategoryProduct.create(category_id: second_category, product_id: product.id)
+end
