@@ -1,10 +1,16 @@
 class Api::ProductsController < ApplicationController
   def index
-    input_name = params[:input_name]
-    if input_name
-      @products = Product.where('LOWER name LIKE ?', "%#{input_name.downcase}%").order(:id)
+    # input_name = params[:client_search]
+    # if input_name
+    #   @products = Product.where('LOWER name LIKE ?', "%#{input_name.downcase}%").order(:id)
+    # else
+    #   @products = Product.all.order(:id)
+    # end
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
     else
-      @products = Product.all.order(:id)
+      @products = Product.all
     end
     render "index.json.jbuilder"
   end
