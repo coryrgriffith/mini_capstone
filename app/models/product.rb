@@ -10,6 +10,10 @@ class Product < ApplicationRecord
     price < 50
   end
 
+  def subtotal
+    price
+  end
+
   def tax
     tax_amount = price * 0.09
     tax_amount.round(2)

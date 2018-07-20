@@ -2,6 +2,13 @@ class Api::CartedProductsController < ApplicationController
   def index
     if current_user
       @carted_products = current_user.carted_products
+      carted_products = []
+      @carted_products.each do |cart|
+        if cart.status == "Carted"
+          carted_products << cart
+        end
+      end
+      @carted_products = carted_products
       render "index.json.jbuilder"
     else
       render json: ["Currently nothing in your cart"]
