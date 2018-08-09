@@ -1,4 +1,9 @@
 class Api::OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+    render "index.json.jbuilder"
+  end
+
   def show
     order_id = params[:id]
     @order = Order.find_by(id: order_id)
