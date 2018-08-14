@@ -1,5 +1,5 @@
 class Api::ProductsController < ApplicationController
-  before_action :authenticate_admin, except: [:index, :show]
+  # before_action :authenticate_admin, except: [:index, :show] 
 
   def index
     # input_name = params[:client_search]
@@ -24,13 +24,16 @@ class Api::ProductsController < ApplicationController
   end
 
   def create
+    p "*" * 50
+    p params[:input_supplier_id]
+    p "*" * 50
     @product = Product.new(
       name: params[:input_name],
-      price: params[:input_price],
-      supplier_id: params[:input_supplier_id],
+      price: params[:input_price].to_i,
+      supplier_id: params[:input_supplier_id].to_i,
       description: params[:input_description]
     )
-    if @product.save
+    if @product.save!
       render "show.json.jbuilder"
     else
       render json: {errors: @product.errors.full_messages}, status: :unprocessible_entity
