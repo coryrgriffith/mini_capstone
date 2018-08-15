@@ -68,6 +68,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vue2-filters/dist/vue2-filters.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js" defer></script>
   </body>
@@ -76,7 +77,8 @@
 <template id="home-page">
   <!-- begin loop here -->
   <div class="vue-component"> 
-    <div v-for="product in products"> 
+    type in your search here: <input v-model="productFilter">
+    <div v-for="product in filterBy(products, productFilter, 'name')"> 
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
