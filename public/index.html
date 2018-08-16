@@ -77,13 +77,17 @@
 <template id="home-page">
   <!-- begin loop here -->
   <div class="vue-component"> 
-    type in your search here: <input v-model="productFilter">
+    type in your search here: <input v-model="productFilter" list="products">
+
+    <datalist id="products">
+      <option v-for="product in products"> {{ product.name }} </option>
+    </datalist>
     <button v-on:click="setSortAttribute('name')">Sort by Name</button>
     <button v-on:click="setSortAttribute('description')">Sort by Description</button>
     <button v-on:click="setSortAttribute('price')">Sort by Price</button>
     <button v-on:click="toggleSortOrder()">Toggle Sort Order</button>
 
-    <div v-for="product in orderBy(products, sortAttribute, sortOrder)">
+    <div v-for="product in orderBy(filterBy(products, productFilter, 'name'), sortAttribute, sortOrder)">
     <!-- <div v-for="product in filterBy(products, productFilter, 'name')">  -->
       <div class="col-sm-6">
         <div class="card">
