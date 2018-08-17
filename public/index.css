@@ -1,0 +1,22 @@
+.slide-left-enter-active {
+  transition: all 5.3s ease;
+}
+.slide-left-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-left-enter, .slide-left-leave-to {
+  transform: translateX(-10px);
+  opacity: 0;
+}
+ .blue {
+  color: blue;
+}
+ .strike {
+  text-decoration: line-through;
+}
+
+/*.card {
+  animation: 
+    pulse 3s ease infinite alternate, 
+    nudge 5s linear infinite alternate;
+}*/

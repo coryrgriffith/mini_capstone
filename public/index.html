@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css">
 
     <title>Products</title>
   </head>
@@ -87,19 +88,21 @@
     <button v-on:click="setSortAttribute('price')">Sort by Price</button>
     <button v-on:click="toggleSortOrder()">Toggle Sort Order</button>
 
-    <div v-for="product in orderBy(filterBy(products, productFilter, 'name'), sortAttribute, sortOrder)">
+    <transition-group name="slide-left">
+      <div v-for="product in orderBy(filterBy(products, productFilter, 'name'), sortAttribute, sortOrder)" v-bind:key="product.id">
     <!-- <div v-for="product in filterBy(products, productFilter, 'name')">  -->
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-description">{{ product.description }}</p>
-            <p class="card-price">{{ product.price }}</p>
-            <a href="/client/products/1" class="btn btn-primary">Go To Product Page</a>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-description">{{ product.description }}</p>
+              <p class="card-price">{{ product.price }}</p>
+              <a href="/client/products/1" class="btn btn-primary">Go To Product Page</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </transition-group>
   </div>
   <!-- End loop here -->
 </template>
